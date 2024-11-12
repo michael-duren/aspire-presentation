@@ -2,6 +2,8 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
+import tailwind from "@astrojs/tailwind";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -14,20 +16,29 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: "Guides",
+          label: "Introduction",
           items: [
             // Each item here is one entry in the navigation menu.
             {
+              label: "About Me",
+              slug: "intro/about-me",
+            },
+            {
               label: "Microservices",
-              slug: "guides/microservices",
+              slug: "intro/microservices",
             },
             {
               label: "What is .NET Aspire",
-              slug: "guides/what-is-dotnet-aspire",
+              slug: "intro/what-is-dotnet-aspire",
             },
+          ],
+        },
+        {
+          label: "Building",
+          items: [
             {
               label: "Secrets & Azure Key Vault",
-              slug: "guides/managing-secrets",
+              slug: "building/managing-secrets",
             },
           ],
         },
@@ -37,5 +48,7 @@ export default defineConfig({
         },
       ],
     }),
+    tailwind(),
   ],
 });
+
