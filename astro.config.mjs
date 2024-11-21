@@ -9,6 +9,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Building with .NET Aspire",
+      customCss: ["./src/css/styles.css"],
       social: {
         github: "https://github.com/michael-duren",
         linkedin: "https://www.linkedin.com/in/michael-duren/",
@@ -22,6 +23,10 @@ export default defineConfig({
             {
               label: "About Me",
               slug: "intro/about-me",
+            },
+            {
+              label: "What's Covered",
+              slug: "intro/covering",
             },
             {
               label: "Microservices",
@@ -51,4 +56,3 @@ export default defineConfig({
     tailwind(),
   ],
 });
-

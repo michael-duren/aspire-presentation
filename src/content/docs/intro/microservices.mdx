@@ -8,12 +8,103 @@ description: An overview of the microservices architecture.
 Before we can dive into .NET Aspire it's important we review
 Microservices and Cloude Native Architecture.
 
-## What is Microservices Architecture?
+## What are Microservices
 
-Microservices is an architectural style that structures an application as a collection of services that are:
+<img
+  alt="mind blown gif"
+  src="/mind-blown.gif"
+  class="w-48 h-48 rounded-md mx-auto"
+/>
 
-- Highly maintainable and testable
-- Loosely coupled
-- Independently deployable
-- Organized around business capabilities
-- Can be implemented by different teams and technologies
+A simple definition of microservices: an application that
+is comprised of other smaller applications (services).
+
+A more accurate defintion: Microservices are
+an architectural style where an application is structured
+as a collection of independently deployable, loosely coupled
+services. These services are organized around business capabilities,
+own their data, and are completely indepedent of each other.
+
+<img alt="microservices" src="/microservices.webp" />
+
+### Organizing Services
+
+Figuring out how to split up your microservices
+can be difficult. A good rule of thumb is to organize
+your services around business capabilities or logical
+operations.
+Domain Driven Design (DDD) is a good approach to
+first focus on your business domain and then split
+your services based on that.
+Applying the SRP (Single Responsibility Principle) to
+your services can also help you split them up.
+
+### Ownership of data
+
+One of the key principles of microservices is that
+each service owns its own data. This means that
+services can easily be scaled independently.
+
+### Independence
+
+The services in a microservices architecture are
+completely indepedent of each other. Depedending
+on the size of the application and organization
+you may have several teams working on different
+services.
+
+Services could be written with
+different tech stacks, programming languages,
+and even hosted on different platforms, though you probably don't
+want to go too extreme with this. Sticking to
+a few programming languages and tech stacks depdending
+on the organization is a good idea.
+
+Services can also be setup in your CI/CD
+pipeline to deplopy independently, allowing
+teams to deploy their services quickly without affecting
+other services.
+
+## Event Driven Architecture (EDA)
+
+Even though our services are indepdent of each other
+we still need a way for them to interact with each other.
+While RESTful APIs are a common way to communicate, using
+message brokers like Kafka, RabbitMQ, Azure Service Bus can be a better
+approach.
+
+**Advantages of using EDA include:**
+
+- Decoupling between services
+- Asynchronous communication - non blocking calls from producers
+  and consumers.
+
+**Messages that are sent between services are usually:**
+
+- Commands: A message that tells a service to do something.
+- Events: A message that tells a service that something has happened.
+- Can contain data (JSON string, bytes, etc) or be empty.
+
+**Events can further be broken down into:**
+
+- Domain events: Events that are specific to a domain.
+- Integration events: Events that are used to communicate between services.
+
+### Overview of the Publish-Subscribe Pattern
+
+There are many ways to implement EDA, but one of the most common
+implementations is the Publish-Subscribe pattern.
+Publishers send messages to a message broker and subscribers
+consume these messages.
+
+<div class="rounded-md mx-auto p-8">
+  <img src="/pub-sub.png" alt="pub sub" class="rounded-lg" />
+</div>
+
+This pattern allows for multiple subscribers to listen to the same
+messages and react to them accordingly. Additional filtering can
+be applied to reduce the number of messages a subscriber receives.
+This is an implementation detail we will go over in a later section.
+For now understanding that messages are sent to a message broker,
+and distributed to subscribers (services) is how we can communicate
+in a loosely coupled manner.
