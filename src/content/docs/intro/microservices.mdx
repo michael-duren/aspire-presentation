@@ -65,6 +65,8 @@ pipeline to deplopy independently, allowing
 teams to deploy their services quickly without affecting
 other services.
 
+## What is Cloud Native Computing
+
 ## Event Driven Architecture (EDA)
 
 Even though our services are indepdent of each other
@@ -72,6 +74,12 @@ we still need a way for them to interact with each other.
 While RESTful APIs are a common way to communicate, using
 message brokers like Kafka, RabbitMQ, Azure Service Bus can be a better
 approach.
+
+If you are familiar with the mediator pattern, this is similar
+in the way it reduces coupling by having an intermediary handle
+the communication. The microservices do not "know" about each other,
+they simply must have the ability to react to messages that are sent from
+the message broker.
 
 **Advantages of using EDA include:**
 
@@ -89,6 +97,19 @@ approach.
 
 - Domain events: Events that are specific to a domain.
 - Integration events: Events that are used to communicate between services.
+- There are other types of events but these are the most common.
+
+In EDA the message broker is a single point of failure and can become
+the bottleneck of your application. This should
+be taken into considertation and have a high amount of
+redundency in place. If you are using a cloud provider
+like Azure, AWS, or GCP they have services that can
+help mitigate these risks by offering managed message broker
+services with built-in redundancy,
+high availability, and fault tolerance. For example, Azure offers Azure Service Bus,
+AWS provides Amazon SQS and Amazon SNS, and GCP has Pub/Sub.
+These services are designed to handle large-scale workloads,
+ensure message durability, and automatically recover from failures.
 
 ### Overview of the Publish-Subscribe Pattern
 
@@ -108,3 +129,103 @@ This is an implementation detail we will go over in a later section.
 For now understanding that messages are sent to a message broker,
 and distributed to subscribers (services) is how we can communicate
 in a loosely coupled manner.
+
+Pictured below is a use case when a new user regsiters for our application there
+might be several actions that need to take place. The services can handle
+that same event independently in this case sending an email, setting up the users
+default todo reminders and a default user goal.
+
+<div class="rounded-md mx-auto p-8">
+  <img src="/pub-sub-2.png" alt="pub sub" class="rounded-lg" />
+</div>
+
+### Event Sourcing Pattern
+
+An advantage of using EDA is that you can implement the Event Sourcing
+Pattern to have a log of events that have happened in your system.
+This is adventageous for many reasons, including:
+
+- A single source of truth: You can use the events to rebuild the state of your system
+  at any point in time.
+- Debugging: Of course being able to move back in time to see exactly what happened
+  is a great way to debug issues.
+- Auditing: You can see who did what and when.
+
+There are some caveats to using Event Sourcing, including the complexity
+and something called eventual consistency. Eventual consistency means
+that data will be consistent at some point in the future, but not
+outright. The delay in consistency can be milliseconds to seconds,
+of course the goal being to minimize this delay.
+
+### The Death Star
+
+If you decide to not use EDA and have services communicate
+directlly with each other you run the risk of creating
+a tightly coupled interdependent system. This is known
+as the Death Star anit-pattern.
+
+It might be okay for smaller projects (technically the example
+application does this) but as your application grows to 100s
+of microservices you can create a mess of dependencies, which
+are hard to manage, deploy, and scale effictively removing the
+advantages of using a microservices architecture.
+
+Pictured below is an example which would be hard to untagle!
+Just like a drawer of unmanaged cables, but much worse.
+
+<div class="rounded-md mx-auto p-8">
+  <img src="/ball-of-mud.jpg" alt="pub sub" class="rounded-lg" />
+</div>
+
+## The Gateway Patterns
+
+If you have a lot of services you want to hide from
+your frontend, Gateways achieve this by essentially
+providing a reverse proxy for the frontend to call.
+
+These gateways can also handle authentication, logging,
+caching, and other cross-cutting concerns. This allows
+aggregating responses and translating one external request
+into many internal ones, even the ability to translate a request
+into different protocols.
+
+For the sample application we will not be using a gateway,
+I have configured the vite dev server to proxy requests
+to the appropriate services, and the nginx docker file
+to do the same.
+
+Similar to the message broker, the gateway can become
+a bottle neck, and single point of failure
+so having a high amount of redundancy is important.
+
+There are multiple ways to implement a gateway, these
+patterns can be mixed and matched to fit your needs
+they include:
+
+- Gateway Routing Pattern: A gateway that routes requests
+  by the frontend directly to internal services, this is
+  what most people think of when they hear gateway.
+- Gateway Aggregation Pattern: A gateway that aggregates
+  responses from multiple services into a single response.
+- Backend for Frontend Pattern: A gateway that is specific
+  to a frontend, this is useful when you have multiple
+  frontends that require different data or capabilities.
+- Gateway Offloading Pattern: A gateway that offloads
+  cross-cutting concerns like authentication, logging,
+  and caching from the services.
+
+Cloud gateways that are currently available include:
+Azure Application Gateway, AWS API Gateway, and GCP API Gateway.
+If you want to deploy and fine grain control of your gateway
+you can use libraries like:
+
+- [Ocelot](https://ocelot.readthedocs.io/en/latest/introduction/gettingstarted.html): A open-source
+  .NET API gateway which includes support for routing,
+  request aggregation, and authentication, load balancing, and more.
+- [YARP](https://microsoft.github.io/reverse-proxy/): Developers love
+  their acronyms, YARP stands for Yet Another Reverse Proxy (similar to YAML in naming).
+  The library was developed by Microsoft and is a reverse proxy that can accomplish
+  many of the same tasks as Ocelot.
+- [Envoy](https://gateway.envoyproxy.io/): A high performance C++ distributed
+  proxy designed for single services and applications, as well as a communication bus
+  and “universal data plane” designed for large microservice “service mesh” architectures.
