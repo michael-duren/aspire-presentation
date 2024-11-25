@@ -102,10 +102,10 @@ the message broker.
 In EDA the message broker is a single point of failure and can become
 the bottleneck of your application. This should
 be taken into considertation and have a high amount of
-redundency in place. If you are using a cloud provider
+resilience in place. If you are using a cloud provider
 like Azure, AWS, or GCP they have services that can
 help mitigate these risks by offering managed message broker
-services with built-in redundancy,
+services with built-in resilience,
 high availability, and fault tolerance. For example, Azure offers Azure Service Bus,
 AWS provides Amazon SQS and Amazon SNS, and GCP has Pub/Sub.
 These services are designed to handle large-scale workloads,
@@ -179,10 +179,9 @@ Just like a drawer of unmanaged cables, but much worse.
 
 ## The Gateway Patterns
 
-If you have a lot of services you want to hide from
-your frontend, Gateways achieve this by essentially
-providing a reverse proxy for the frontend to call.
-
+Gateways can provide a single entry for your frontend
+to interface with simplifying the communication between
+your backend services.
 These gateways can also handle authentication, logging,
 caching, and other cross-cutting concerns. This allows
 aggregating responses and translating one external request
@@ -196,7 +195,7 @@ to do the same.
 
 Similar to the message broker, the gateway can become
 a bottle neck, and single point of failure
-so having a high amount of redundancy is important.
+so having a high amount of resilience is important.
 
 There are multiple ways to implement a gateway, these
 patterns can be mixed and matched to fit your needs
