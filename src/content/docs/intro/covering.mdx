@@ -5,17 +5,15 @@ description: What we're going through
 
 import { Aside } from "@astrojs/starlight/components";
 
-## Overview
-
 Buliding applications using microservices can be done many ways,
 with many different pieces of technology.. Even using .NET Aspire
 we could still use different languages for our frontend, databases,
 messaging strageties, etc.
 
-My goal here is not to dive deep into every part of .NET Aspire &
-microservices but to show an approach I used and give an overview of how you can
-get started with your own projects. I am new to the world of
-microservices and cloud-native design so if you see something
+My goal here is not to dive deep into every part of
+microservices but to focus on what .NET Aspire is, how it works,
+and the problems it solves. I am new to the world of
+microservices and cloud-native so if you see something
 here that you think could be better or isn't a great approach
 please let me know.
 
@@ -26,3 +24,87 @@ please let me know.
     [here](https://github.com/michael-duren/aspire-presentation).
   </span>
 </Aside>
+
+## Contents
+
+### Intro
+
+A brief introduction into microservices, and cloud-native
+computing and how .NET Aspire fits in the picture.
+
+<ul class="px-8">
+  <li>
+    <a href="/intro/microservices">Microservices & Cloud Native</a>
+  </li>
+  <li>
+    <a href="/intro/what-is-dotnet-aspire">What is .NET Aspire?</a>
+  </li>
+</ul>
+
+### How does .NET Aspire work?
+
+A look into what .NET Aspire is doing
+for us, the abstractions it provides, and how to setup
+a new or existing project.
+
+<ul class="px-8">
+  <li>
+    <a href="/how-does-aspire-work/index">How does .NET Aspire work?</a>
+  </li>
+  <li>
+    <a href="/how-does-aspire-work/networking-service-discovery">
+      Networking & Service Discovery
+    </a>
+  </li>
+  <li>
+    <a href="/how-does-aspire-work/setting-up-a-project">
+      Setting up a aspire project
+    </a>
+  </li>
+  <li>
+    <a href="/how-does-aspire-work/adding-resources-to-a-project">
+      Adding resources to a project
+    </a>
+  </li>
+</ul>
+
+### Building a project
+
+We'll walk through a small demo project I built
+using .NET Aspire.
+
+<ul class="px-8">
+  <li>
+    <a href="/building/project-overview">Project Overview</a>
+  </li>
+  <li>
+    <a href="/building/adding-databases">Adding databases</a>
+  </li>
+  <li>
+    <a href="/building/managing-secrets">
+      Managing Secrets with Azure Key Vault
+    </a>
+  </li>
+  <li>
+    <a href="/building/authenticaton-authorization">
+      Handling Authenticaton & Authorization across Microservices
+    </a>
+  </li>
+  <li>
+    <a href="/building/rabbit-mq">Adding RabbitMQ</a>
+  </li>
+</ul>
+
+### Deploying a project
+
+A brief overview of deploying a project using
+the Azure CLI or Aspir8 for kubernetes.
+
+<ul>
+  <li>
+    <a href="">Azure CLI</a>
+  </li>
+  <li>
+    <a>Aspir8</a>
+  </li>
+</ul>

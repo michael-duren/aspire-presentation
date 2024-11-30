@@ -39,11 +39,62 @@ export default defineConfig({
           ],
         },
         {
+          label: "How does .NET Aspire work?",
+          items: [
+            {
+              label: "How does .NET Aspire work?",
+              slug: "how-does-aspire-work",
+            },
+            {
+              label: "Networking & Service Discovery",
+              slug: "how-does-aspire-work/networking-service-discovery",
+            },
+            {
+              label: "Setting up a aspire project",
+              slug: "how-does-aspire-work/setting-up-a-project",
+            },
+            {
+              label: "Adding resources to a project",
+              slug: "how-does-aspire-work/adding-resources-to-a-project",
+            },
+          ],
+        },
+        {
           label: "Building",
           items: [
             {
+              lable: "Project Overview",
+              slug: "building/project-overview",
+            },
+            {
+              label: "Adding a Database",
+              slug: "building/adding-databases",
+            },
+            {
               label: "Secrets & Azure Key Vault",
               slug: "building/managing-secrets",
+            },
+            {
+              label:
+                "Handling Authenticaton & Authorization across Microservices",
+              slug: "building/authenticaton-authorization",
+            },
+            {
+              label: "Adding RabbitMQ",
+              slug: "building/rabbit-mq",
+            },
+          ],
+        },
+        {
+          label: "Deploying a project",
+          items: [
+            {
+              label: "Azure CLI",
+              slug: "deploying/azure-cli",
+            },
+            {
+              label: "Aspir8",
+              slug: "deploying/aspir8",
             },
           ],
         },
