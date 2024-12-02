@@ -39,16 +39,8 @@ export default defineConfig({
           ],
         },
         {
-          label: "How does .NET Aspire work?",
+          label: "Getting Started",
           items: [
-            {
-              label: "How does .NET Aspire work?",
-              slug: "how-does-aspire-work",
-            },
-            {
-              label: "Networking & Service Discovery",
-              slug: "how-does-aspire-work/networking-service-discovery",
-            },
             {
               label: "Setting up a aspire project",
               slug: "how-does-aspire-work/setting-up-a-project",
@@ -57,13 +49,17 @@ export default defineConfig({
               label: "Adding resources to a project",
               slug: "how-does-aspire-work/adding-resources-to-a-project",
             },
+            {
+              label: "Networking & Service Discovery",
+              slug: "how-does-aspire-work/networking-service-discovery",
+            },
           ],
         },
         {
           label: "Building",
           items: [
             {
-              lable: "Project Overview",
+              label: "Project Overview",
               slug: "building/project-overview",
             },
             {
