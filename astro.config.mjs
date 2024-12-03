@@ -43,15 +43,15 @@ export default defineConfig({
           items: [
             {
               label: "Setting up a aspire project",
-              slug: "how-does-aspire-work/setting-up-a-project",
+              slug: "getting-started/setting-up-a-project",
             },
             {
               label: "Adding resources to a project",
-              slug: "how-does-aspire-work/adding-resources-to-a-project",
+              slug: "getting-started/adding-resources-to-a-project",
             },
             {
               label: "Networking & Service Discovery",
-              slug: "how-does-aspire-work/networking-service-discovery",
+              slug: "getting-started/networking-service-discovery",
             },
           ],
         },
