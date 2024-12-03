@@ -46,6 +46,10 @@ export default defineConfig({
               slug: "getting-started/setting-up-a-project",
             },
             {
+              label: "Solution Walkthrough",
+              slug: "getting-started/solution-walkthrough",
+            },
+            {
               label: "Adding resources to a project",
               slug: "getting-started/adding-resources-to-a-project",
             },

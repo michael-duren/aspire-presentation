@@ -1,3 +1,7 @@
 main li {
   list-style: disc;
 }
+
+.directory {
+  list-style: none;
+}
