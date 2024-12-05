@@ -67,10 +67,6 @@ export default defineConfig({
               slug: "building/project-overview",
             },
             {
-              label: "Adding a Database",
-              slug: "building/adding-databases",
-            },
-            {
               label: "Secrets & Azure Key Vault",
               slug: "building/managing-secrets",
             },

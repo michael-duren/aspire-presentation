@@ -40,12 +40,7 @@ var todosdb = builder.AddPostgres(
         port: 5433
     )
     // Creates the database
-    .AddDatabase(
-        // resource name
-        name: "todosdb",
-        // what the actual db name is
-        databaseName: "todos"
-    );
+    .AddDatabase("todosdb");
 ```
 
 If you don't specify the port a random port will be assigned,
@@ -148,7 +143,7 @@ builder.AddNpgsqlDbContext<TodoContext>("todosdb");
 Next update our `Program.cs` to use controllers and migrate
 our context when the application starts.
 
-```csharp ins={9, 21-25, 31}
+```csharp ins={9-10, 22-26, 32}
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -158,6 +153,7 @@ builder.AddNpgsqlDbContext<TodoContext>(connectionName: "todosdb");
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
+builder.AddServiceDefaults(); // Aspire service defaults
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
