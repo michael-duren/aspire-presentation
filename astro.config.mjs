@@ -50,7 +50,7 @@ export default defineConfig({
               slug: "getting-started/solution-walkthrough",
             },
             {
-              label: "Adding resources to a project",
+              label: "Adding integrations to a project",
               slug: "getting-started/adding-resources-to-a-project",
             },
             {
