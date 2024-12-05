@@ -3,3 +3,42 @@ title: Aspir8
 description: What is Aspir8
 lastUpdated: 2024-11-30
 ---
+
+Aspir8 is a tool created by the .NET community
+that handles the generation of deployment YAML
+based on the app host manifest.
+
+To install:
+
+```bash
+dotnet tool install -g aspirate --prerelease
+```
+
+To update:
+
+```bash
+dotnet tool update -g aspirate --prerelease
+```
+
+If we navigate to our earlier example of
+`Walkthrough.AppHost` we can try to
+generate our `.yaml`.
+
+`cd Walkthrough.AppHost && aspirate generate`
+
+After answering the questions from the CLI
+it should generate several folders with
+the necessary yaml.
+
+![aspir8 gen](/aspir8-gen.png)
+
+We can additionally run the kubernetes
+cluster by running
+
+`aspirate run`
+
+And the following should be visible in
+Docker Desktop or wherever you are running
+you're running your cluster.
+
+![docker desktop](/docker-desktop.png)

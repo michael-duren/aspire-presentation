@@ -81,8 +81,8 @@ export default defineConfig({
           label: "Deploying a project",
           items: [
             {
-              label: "Azure CLI",
-              slug: "deploying/azure-cli",
+              label: "The manifest.json",
+              slug: "deploying/manifest",
             },
             {
               label: "Aspir8",
