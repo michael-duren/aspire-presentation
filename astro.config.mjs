@@ -53,10 +53,6 @@ export default defineConfig({
               label: "Adding integrations to a project",
               slug: "getting-started/adding-resources-to-a-project",
             },
-            {
-              label: "Networking & Service Discovery",
-              slug: "getting-started/networking-service-discovery",
-            },
           ],
         },
         {
